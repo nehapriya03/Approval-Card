@@ -1,17 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import faker from "faker";
+import CommentDetail from "./CommentDetail";
+import ApprovalCard from "./ApprovalCard";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+if (module.hot) {
+  module.hot.accept();
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const App = () => {
+  return (
+    <div className="ui container comments">
+      <ApprovalCard>
+        <CommentDetail
+          author="Sam"
+          timeAgo="Today at 2pm"
+          text="Good job"
+          avatar={faker.image.avatar()}
+        ></CommentDetail>
+      </ApprovalCard>
+
+      <ApprovalCard>
+        <CommentDetail
+          author="Alex"
+          timeAgo="Today at 3 pm"
+          text="Hey you are good"
+          avatar={faker.image.avatar()}
+        ></CommentDetail>
+      </ApprovalCard>
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.querySelector("#root"));
